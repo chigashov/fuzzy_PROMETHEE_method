@@ -1,16 +1,14 @@
-import React, {useState, useEffect, useMemo} from "react";
+import React, {useMemo} from "react";
 import PropTypes from 'prop-types';
 
 import InputEvaluations from "../Input/evaluations";
 import './styles.sass'
-import { string } from "prop-types";
 
 const CreateTable = ({id, rows, cols, parentCallback_val, parentCallback_crit, criterion_legends, alt_legends}) => {
   var val_table = Array.from({length: rows}, (i,j)=>Array.from({length: cols}, (v,k)=>alt_legends[0]));
   var w_table = Array.from({length: cols}, (i,j)=>criterion_legends[0]);
   const table = useMemo(() => {
     const t = [];
-    const stateTab = [];
 
     for(let i = 0; i < rows; i++) {
       t[i] = [];
@@ -45,6 +43,7 @@ const CreateTable = ({id, rows, cols, parentCallback_val, parentCallback_crit, c
   return (
     <>
     <div className="table">
+      <div className="table-left-decoration"></div>
       <div className="table__criteria-row">
         <div className="table__cell" />
         {table[0].map((criteria, index) => (

@@ -5,7 +5,6 @@ import {transform_table, transform_waights, aggregate_decidions,
 
 import './styles.sass'
 
-
 const Report = ({val_tables, weights_tables, terms1, terms2}) => {
 
   const _transformed_val_table = transform_table(val_tables, terms1);
@@ -29,14 +28,15 @@ const Report = ({val_tables, weights_tables, terms1, terms2}) => {
   };
 
   const flows_table = transpose_matrix(_flows_table);
-  const headers = ['Possitive flow', 'Negative flow', 'Net flow'];
+  const headers = ['Исходящий поток', 'Входящий поток', 'Чистый поток'];
   return (
     <>
       <div className='table'>
+        <div className="table-left-decoration"></div>
         <div className='table__criteria-row'>
           <div className="table__cell" />
             {headers.map((flow, index) => (
-            <div className="table__cell" key={flow}>
+            <div className="table__cell" key={index}>
               <span>{flow}</span>
             </div>
           ))}
@@ -48,11 +48,13 @@ const Report = ({val_tables, weights_tables, terms1, terms2}) => {
             </div>
             <div className="table__row"> {
               row.map((cell, cellIndex) =>
-                (<div className="table__cell" key={cell}>
+                (<div className="table__cell" key={cellIndex}>
                   <span>{cell.toFixed(3)}</span>
-                </div>))}
+                </div>
+              ))}
             </div>
-          </div>))} 
+          </div>
+        ))} 
       </div>
     </>
   );

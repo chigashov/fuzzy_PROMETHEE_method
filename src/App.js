@@ -6,7 +6,6 @@ import CreateTable from './components/Table/index';
 import Report from './components/Table/report';
 import './styles.sass';
 
-
 const App = () => {
   const terms_criterion = {
     'VL': [0, 0.1, 0.3],
@@ -75,10 +74,10 @@ const App = () => {
 
   const on_save_dim_clicked = () => {
     setCriterionMatrix(Array.from({length: countOfDecisionMakers}, (i,j)=>
-                  Array.from({length: countOfCriteria}, (v,k)=>'VL')));
+      Array.from({length: countOfCriteria}, (v,k)=>'VL')));
     setValMatrix(Array.from({length: countOfDecisionMakers}, (z,p)=>
-        Array.from({length: countOfAlternatives}, (i,j)=>
-        Array.from({length: countOfCriteria}, (v,k)=>'N'))));
+      Array.from({length: countOfAlternatives}, (i,j)=>
+      Array.from({length: countOfCriteria}, (v,k)=>'N'))));
   }
 
   const on_calculate_clicked = () => {
@@ -111,19 +110,38 @@ const App = () => {
         {!isSavedCount ? (
           <>
             <form className='input-container' onSubmit={saveCounts}>
-              <p>
-                Count Of Decision Makers&nbsp;
-                <Input count={countOfDecisionMakers} setCount={setCountOfDecisionMakers} min={1} max={5}/>
-              </p>
-              <p>
-                Count Of Criteria&nbsp;
-                <Input  count={countOfCriteria} setCount={setCountOfCriteria} max={6} />
-              </p>
-              <p>
-                Count Of Alternatives&nbsp;
-                <Input count={countOfAlternatives} setCount={setCountOfAlternatives} max={10} />
-              </p>
-              <Button isDisabled={isDisabledButton} on_click={on_save_dim_clicked}>Save</Button>
+              <div className="form-left-decoration"></div>
+              <div className="form-right-decoration"></div>
+              <div className="circle"></div>
+              <h2 className='input-container__h2form'>Метод fuzzy PROMETHEE</h2>
+              <div className='input-container__divform'>
+                Введите количество ЛПР:
+                <Input
+                  count={countOfDecisionMakers} 
+                  setCount={setCountOfDecisionMakers}
+                  min={1}
+                  max={5}
+                />
+              </div>
+              <div className='input-container__divform'>
+                Введите количество критериев:
+                <Input
+                  count={countOfCriteria}
+                  setCount={setCountOfCriteria}
+                  min={2}
+                  max={6}
+                />
+              </div>
+              <div className='input-container__divform'>
+                Введите количесвто альтернатив:
+                <Input
+                  count={countOfAlternatives}
+                  setCount={setCountOfAlternatives}
+                  min={2}
+                  max={10}
+                />
+              </div>
+              <Button isDisabled={isDisabledButton} on_click={on_save_dim_clicked}>Сохранить</Button>
             </form>
             <div className='counters'>
               <span>Count Of Decision Makers: {countOfDecisionMakers}</span>
@@ -143,7 +161,7 @@ const App = () => {
                 criterion_legends={crit_legs}
                 alt_legends={alt_legs}/>
             ))}
-            <Button isDisabled={isDisabledButton} on_click={on_calculate_clicked}>Calculate</Button>
+            <Button isDisabled={isDisabledButton} on_click={on_calculate_clicked}>Рассчитать</Button>
           </div>
         )} 
       </div>

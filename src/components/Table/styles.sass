@@ -1,7 +1,15 @@
 .table
-  margin: 0 auto 20px
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif
+  margin: 10% auto 20px
   display: flex
   flex-direction: column
+  text-align: left
+  border-collapse: separate
+  border-spacing: 5px
+  background: #fff
+  border: 16px solid #fff
+  border-radius: 10px
+  position: relative
 
   &__criteria-row 
     display: flex
@@ -13,9 +21,43 @@
     align-items: center
 
   &__cell
+    text-align: center
     padding: 5px
-    width: 50px
-    height: 20px
+    width: 100px
+    height: 30px
     display: flex
     justify-content: center
     align-items: center
+    background: #fff
+    
+.table-left-decoration
+  content: ""
+  position: absolute
+  width: 50px
+  height: 20px
+  background: #8ac5e7
+  border-radius: 20px
+  
+.table-left-decoration
+  bottom: 65%
+  left: -50px
+  
+.table-right-decoration
+  bottom: 10px
+  right: -50px
+
+.table-left-decoration:before, .table-left-decoration:after
+  content: ""
+  position: absolute
+  width: 50px
+  height: 20px
+  border-radius: 30px
+  background: #fff
+
+.table-left-decoration:before
+  top: -20px
+  left: 0px
+
+.table-left-decoration:after
+  top: 20px
+  left: 10px

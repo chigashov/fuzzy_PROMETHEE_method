@@ -1,6 +1,8 @@
 import React from "react";
 
-const Input = ({count, setCount, min = 2, max}) => {
+import './styles.sass'
+
+const Input = ({count, setCount, min, max}) => {
   
   const onChangeHandler = (event) => {
     if (Number(event.target.value) > max) return;
@@ -9,11 +11,12 @@ const Input = ({count, setCount, min = 2, max}) => {
 
   return (
     <input
+      className='input'
       type='number'
       value={count}
       onChange={onChangeHandler}
       min={min}
-      max={max}  
+      max={max}
     />
   )
 };
