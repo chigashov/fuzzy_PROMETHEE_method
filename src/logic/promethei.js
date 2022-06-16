@@ -166,11 +166,17 @@ const calculate_flows = (prefer_mtx) => {
     p_flow = p_flow / (N-1);
     n_flow = n_flow / (N-1);
     net_flow = p_flow - n_flow;
-    positive_flows.push(p_flow);
-    negative_flows.push(n_flow);
-    net_flows.push(net_flow);
-    }
-  return [positive_flows, negative_flows, net_flows];
+    positive_flows.push(p_flow.toFixed(3));
+    negative_flows.push(n_flow.toFixed(3));
+    net_flows.push(net_flow.toFixed(3));
+  }
+  let rank = net_flows.slice(0).sort(function(a, b) {
+    return b - a;
+  }), ranking = [];
+  for (var i = 0; i < net_flows.length; i++) {
+    ranking.push(rank.indexOf(net_flows[i]) + 1);
+  }
+  return [positive_flows, negative_flows, net_flows, ranking];
 }
 
 export {

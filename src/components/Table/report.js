@@ -28,7 +28,7 @@ const Report = ({val_tables, weights_tables, terms1, terms2}) => {
   };
 
   const flows_table = transpose_matrix(_flows_table);
-  const headers = ['Исходящий поток', 'Входящий поток', 'Чистый поток'];
+  const headers = ['Исходящий поток', 'Входящий поток', 'Чистый поток', 'Ранжирование'];
   return (
     <>
       <div className='table'>
@@ -49,7 +49,7 @@ const Report = ({val_tables, weights_tables, terms1, terms2}) => {
             <div className="table__row"> {
               row.map((cell, cellIndex) =>
                 (<div className="table__cell" key={cellIndex}>
-                  <span>{cell.toFixed(3)}</span>
+                  <span>{cell}</span>
                 </div>
               ))}
             </div>
